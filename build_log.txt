@@ -1,0 +1,37 @@
+
+> temp-app@0.1.0 build
+> next build
+
+▲ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 1 errors:
+./app/components/Button.tsx:8:10
+Ecmascript file had an error
+[0m [90m  6 |[39m [36mimport[39m { twMerge } [36mfrom[39m [32m'tailwind-merge'[39m[33m;[39m
+ [90m  7 |[39m
+[31m[1m>[22m[39m[90m  8 |[39m [36mfunction[39m cn([33m...[39minputs[33m:[39m [33mClassValue[39m[]) {
+ [90m    |[39m          [31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m  9 |[39m     [36mreturn[39m twMerge(clsx(inputs))[33m;[39m
+ [90m 10 |[39m }
+ [90m 11 |[39m[0m
+
+the name `cn` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./app/components/Button.tsx [Client Component Browser]
+    ./app/sections/Hero.tsx [Client Component Browser]
+    ./app/sections/Hero.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/components/Button.tsx [Client Component SSR]
+    ./app/sections/Hero.tsx [Client Component SSR]
+    ./app/sections/Hero.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+
+    at <unknown> (./app/components/Button.tsx:8:10)
