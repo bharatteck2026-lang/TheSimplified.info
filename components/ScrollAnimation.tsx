@@ -34,25 +34,34 @@ export default function ScrollAnimation() {
 
         const heroText = document.querySelector(".hero-text-entry");
         if (heroText) {
+            // Pre-set visibility to avoid any "pop-in" if JS is slow
+            const heroElements = [".hero-text-entry", ".hero-tag-entry", ".hero-cta-entry"];
+            heroElements.forEach(sel => {
+                const el = document.querySelector(sel) as HTMLElement;
+                if (el) el.style.opacity = "0";
+            });
+
             createTimeline({
-                defaults: { ease: 'outExpo' }
+                defaults: {
+                    ease: 'expoOut', // Smoother, more cinematic ease
+                    duration: 1500
+                }
             })
                 .add('.hero-text-entry', {
                     opacity: [0, 1],
-                    translateY: [50, 0],
-                    duration: 1500,
-                    delay: 500
+                    translateY: [30, 0], // Reduced distance for smoother feel
+                    delay: 400
                 })
                 .add('.hero-tag-entry', {
                     opacity: [0, 1],
                     translateY: [20, 0],
-                    duration: 1000,
-                }, '-=800')
+                    duration: 1200
+                }, '-=1000')
                 .add('.hero-cta-entry', {
                     opacity: [0, 1],
-                    translateY: [10, 0],
-                    duration: 800,
-                }, '-=600');
+                    translateY: [15, 0],
+                    duration: 1000
+                }, '-=800');
         }
 
         return () => {
