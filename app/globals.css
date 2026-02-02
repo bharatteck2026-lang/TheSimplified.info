@@ -510,6 +510,198 @@ footer {
     font-size: 0.9rem;
 }
 
+/* PAGE HEADERS */
+.page-header {
+    padding-top: 150px;
+    padding-bottom: 60px;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+}
+
+.sub-text {
+    max-width: 700px;
+    margin: 20px auto;
+    color: var(--text-secondary);
+    font-size: clamp(1rem, 2vw, 1.1rem);
+}
+
+/* PORTFOLIO GALLERY */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.gallery-image {
+    object-fit: cover !important;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.gallery-item:hover .gallery-image {
+    transform: scale(1.08);
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-overlay h3 {
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.overlay-tag {
+    color: var(--accent-gold);
+}
+
+/* SERVICE ROWS */
+.service-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.service-row-reverse {
+    direction: rtl;
+    text-align: left;
+}
+
+.service-img-col {
+    direction: ltr;
+    /* Reset direction for images */
+}
+
+.service-text-col {
+    direction: ltr;
+    /* Reset direction for text */
+}
+
+.service-main-img {
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.service-row:hover .service-main-img {
+    transform: scale(1.02);
+}
+
+.service-label {
+    color: var(--accent-gold);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.service-headline {
+    margin: 10px 0 20px;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+}
+
+.service-desc {
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+}
+
+.service-list {
+    color: var(--text-secondary);
+    margin-left: 20px;
+    list-style: disc;
+}
+
+.service-list li {
+    margin-bottom: 8px;
+}
+
+/* PROCESS SYSTEM */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.process-step {
+    padding: 20px;
+}
+
+.step-num {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-gold);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 auto 25px;
+}
+
+.process-step h3 {
+    margin-bottom: 15px;
+}
+
+.process-step p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* CONTACT SYSTEM */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 80px;
+}
+
+.contact-headline {
+    margin-bottom: 30px;
+}
+
+.contact-item {
+    margin-bottom: 40px;
+}
+
+.contact-label {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.contact-detail {
+    color: var(--text-secondary);
+}
+
+.contact-detail a:hover {
+    color: var(--accent-gold);
+}
+
 /* UNIVERSAL RESPONSIVE OVERRIDES */
 @media (max-width: 1024px) {
     .container {
@@ -573,4 +765,3 @@ footer {
         padding: 60px 0;
     }
 }
-
