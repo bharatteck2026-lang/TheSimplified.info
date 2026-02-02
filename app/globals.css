@@ -1,3 +1,5 @@
+@import 'tailwindcss';
+
 /* LIGHT THEME DESIGN SYSTEM */
 :root {
     --bg-white: #FFFFFF;
@@ -18,7 +20,7 @@
 }
 
 body {
-    font-family: 'Lato', sans-serif;
+    /* Font family handled by Next.js Font Optimization in layout */
     color: var(--text-primary);
     background: var(--bg-white);
     line-height: 1.6;
@@ -29,7 +31,7 @@ h1,
 h2,
 h3,
 h4 {
-    font-family: 'Cinzel', serif;
+    /* Font family handled by Next.js Font Optimization in layout */
     color: var(--text-primary);
     font-weight: 700;
 }

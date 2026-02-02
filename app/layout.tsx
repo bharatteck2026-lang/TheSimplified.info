@@ -1,28 +1,27 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "../styles/globals.css";
+import { Cinzel, Lato } from "next/font/google"; // Correct imports
+import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ScrollAnimation from "@/components/ScrollAnimation"; // Import animation handler
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Configure fonts
+const cinzel = Cinzel({
   subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-cinzel"
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const lato = Lato({
   subsets: ["latin"],
+  weight: ["300", "400", "700"],
+  variable: "--font-lato"
 });
 
 export const metadata: Metadata = {
-  title: "Cinematic Agency | High-Performance",
-  description: "A mobile-first, high-performance cinematic agency website.",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://example.com",
-    title: "Cinematic Agency",
-    description: "High-performance cinematic agency website.",
-    siteName: "Cinematic Agency",
-  },
+  title: "Home | Simplified Media Studio",
+  description: "Simplified Media Studio - Premium Video Production and Photography Agency. We craft cinematic visual experiences for brands.",
+  keywords: "Video Production, Photography, Post-Production, Brand Storytelling, Cinematic, Media Studio",
 };
 
 export default function RootLayout({
@@ -32,10 +31,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${cinzel.variable} ${lato.variable} antialiased`}>
+        <Navbar />
+        <ScrollAnimation />
         {children}
+        <Footer />
       </body>
     </html>
   );
