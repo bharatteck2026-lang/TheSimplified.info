@@ -1,8 +1,8 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="32" height="32" rx="6" fill="#1A1A1A"/>
-  <path d="M10 10H22V16L24 14V20L22 18V22H10V10Z" fill="#2A3E5E"/>
-  <circle cx="14" cy="14" r="2" fill="#C8232C"/>
-  <circle cx="18" cy="14" r="2" fill="white" fill-opacity="0.3"/>
-  <circle cx="14" cy="18" r="2" fill="white" fill-opacity="0.3"/>
-  <circle cx="18" cy="18" r="2" fill="white" fill-opacity="0.3"/>
+  <!-- Stylized Cine Camera with transparent background -->
+  <path d="M4 10C4 8.89543 4.89543 8 6 8H18C19.1046 8 20 8.89543 20 10V14L28 9V23L20 18V22C20 23.1046 19.1046 24 18 24H6C4.89543 24 4 23.1046 4 22V10Z" fill="#D4AF37"/>
+  <circle cx="9" cy="13" r="2" fill="#C8232C"/>
+  <circle cx="15" cy="13" r="1.5" fill="#1A1A1A" fill-opacity="0.2"/>
+  <circle cx="9" cy="19" r="1.5" fill="#1A1A1A" fill-opacity="0.2"/>
+  <circle cx="15" cy="19" r="1.5" fill="#1A1A1A" fill-opacity="0.2"/>
 </svg>
