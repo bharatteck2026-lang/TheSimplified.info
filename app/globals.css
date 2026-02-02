@@ -574,26 +574,3 @@ footer {
     }
 }
 
-/* Quick mobile nav hack for 1-hour build: Just centered or stacked */
-header {
-    position: relative;
-    padding: 20px 0;
-}
-
-nav {
-    flex-direction: column;
-    gap: 20px;
-}
-
-.nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-}
-
-.footer-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
-}
-}
