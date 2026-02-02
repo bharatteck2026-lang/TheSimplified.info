@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   title: "Home | Simplified Media Studio",
   description: "Simplified Media Studio - Premium Video Production and Photography Agency. We craft cinematic visual experiences for brands.",
   keywords: "Video Production, Photography, Post-Production, Brand Storytelling, Cinematic, Media Studio",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
