@@ -10,27 +10,11 @@ export default function Home() {
 
         <CanvasBackground />
 
-        {/* STUDIO HUD OVERLAY */}
-        <div className="studio-hud">
-          <div className="hud-corner hud-top-left"></div>
-          <div className="hud-corner hud-top-right"></div>
-          <div className="hud-corner hud-bottom-left"></div>
-          <div className="hud-corner hud-bottom-right"></div>
-          <div className="hud-rec">
-            <div className="rec-dot"></div>
-            <span>STUDIO_LIVE</span>
-          </div>
-        </div>
-
-        {/* AMBIENT LIGHT LEAKS */}
-        <div className="light-leak" style={{ top: '-10%', left: '-10%' }}></div>
-        <div className="light-leak" style={{ bottom: '-10%', right: '-10%', animationDelay: '-7s' }}></div>
-
-        <div className="container" style={{ position: 'relative', zIndex: 5, paddingTop: '60px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '60px' }}>
           <h1 className="hero-text-entry"
             style={{ fontSize: '4rem', marginBottom: '20px', lineHeight: 1.1, opacity: 0, color: '#fff', textShadow: '0 4px 10px rgba(0,0,0,0.5)' }}>
             Visuals That Speak<br />
-            <span className="glint-text" style={{ color: 'var(--accent-gold)' }}>Louder.</span>
+            <span style={{ color: 'var(--accent-gold)' }}>Louder.</span>
           </h1>
           <p className="hero-tag-entry"
             style={{ fontSize: '1.5rem', color: 'rgba(255, 255, 255, 0.9)', marginBottom: '40px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto', fontWeight: 300, opacity: 0 }}>
