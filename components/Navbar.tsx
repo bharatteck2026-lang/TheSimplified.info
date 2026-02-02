@@ -1,26 +1,35 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+    const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
+
+    // Close menu on route change
+    useEffect(() => {
+        setIsOpen(false);
+    }, [pathname]);
+
+    // Prevent scroll when menu is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+    }, [isOpen]);
 
     const isActive = (path: string) => pathname === path ? "active" : "";
 
     return (
-        <header>
+        <header className={isOpen ? "menu-open" : ""}>
             <div className="container">
                 <nav>
                     <Link href="/" className="nav-logo">
-                        {/* Using standard img tag if desired for simplicity, or Next Image. 
-                        Next Image requires known sizing. Using standard img as per conversion request to keep it simple unless optimized.
-                        But Next.js best practice is Image. 
-                        I'll use unoptimized Image or standard img if sizing is tricky. 
-                        Let's use standard img for logo to avoid layout shifts if we don't know exact size, or use fill.
-                        Actually, let's use next/image with generic sizing and style.
-                    */}
                         <Image
                             src="/logo.png"
                             alt="Simplified Media Studio"
@@ -30,12 +39,26 @@ export default function Navbar() {
                             priority
                         />
                     </Link>
-                    <div className="nav-links">
-                        <Link href="/" className={isActive("/")}>Home</Link>
-                        <Link href="/about" className={isActive("/about")}>About</Link>
-                        <Link href="/services" className={isActive("/services")}>Services</Link>
-                        <Link href="/portfolio" className={isActive("/portfolio")}>Portfolio</Link>
-                        <Link href="/contact" className={isActive("/contact")}>Contact</Link>
+
+                    {/* Hamburger Button */}
+                    <button
+                        className={`menu-toggle ${isOpen ? "active" : ""}`}
+                        onClick={() => setIsOpen(!isOpen)}
+                        aria-label="Toggle Menu"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <div className={`nav-links ${isOpen ? "active" : ""}`}>
+                        <div className="nav-links-inner">
+                            <Link href="/" className={isActive("/")} onClick={() => setIsOpen(false)}>Home</Link>
+                            <Link href="/about" className={isActive("/about")} onClick={() => setIsOpen(false)}>About</Link>
+                            <Link href="/services" className={isActive("/services")} onClick={() => setIsOpen(false)}>Services</Link>
+                            <Link href="/portfolio" className={isActive("/portfolio")} onClick={() => setIsOpen(false)}>Portfolio</Link>
+                            <Link href="/contact" className={isActive("/contact")} onClick={() => setIsOpen(false)}>Contact</Link>
+                        </div>
                     </div>
                 </nav>
             </div>

@@ -31,21 +31,18 @@ export default function StatsCounter() {
     }, []);
 
     return (
-        <div ref={containerRef} style={{ display: 'flex', gap: '40px', marginTop: '40px' }}>
+        <div ref={containerRef} className="stats-grid">
             <div className="counter-box">
-                <h3 className="counter" data-target="5"
-                    style={{ fontSize: '2.5rem', color: 'var(--accent-gold)', marginBottom: 0 }}>0</h3>
-                <p style={{ fontSize: '0.9rem', fontWeight: 700 }}>Years Exp.</p>
+                <h3 className="counter" data-target="5">0</h3>
+                <p className="counter-label">Years Exp.</p>
             </div>
             <div className="counter-box">
-                <h3 className="counter" data-target="150"
-                    style={{ fontSize: '2.5rem', color: 'var(--accent-gold)', marginBottom: 0 }}>0</h3>
-                <p style={{ fontSize: '0.9rem', fontWeight: 700 }}>Projects Done</p>
+                <h3 className="counter" data-target="150">0</h3>
+                <p className="counter-label">Projects Done</p>
             </div>
             <div className="counter-box">
-                <h3 className="counter" data-target="100"
-                    style={{ fontSize: '2.5rem', color: 'var(--accent-gold)', marginBottom: 0 }}>0</h3>
-                <p style={{ fontSize: '0.9rem', fontWeight: 700 }}>Happy Clients</p>
+                <h3 className="counter" data-target="100">0</h3>
+                <p className="counter-label">Happy Clients</p>
             </div>
         </div>
     );
