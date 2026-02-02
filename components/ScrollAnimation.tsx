@@ -43,25 +43,25 @@ export default function ScrollAnimation() {
 
             createTimeline({
                 defaults: {
-                    ease: 'expoOut', // Smoother, more cinematic ease
-                    duration: 1500
+                    ease: 'expoOut',
+                    duration: 1000 // Faster
                 }
             })
                 .add('.hero-text-entry', {
                     opacity: [0, 1],
-                    translateY: [30, 0], // Reduced distance for smoother feel
-                    delay: 400
+                    translateY: [20, 0],
+                    delay: 200 // Faster
                 })
                 .add('.hero-tag-entry', {
                     opacity: [0, 1],
-                    translateY: [20, 0],
-                    duration: 1200
-                }, '-=1000')
+                    translateY: [15, 0],
+                    duration: 800
+                }, '-=800')
                 .add('.hero-cta-entry', {
                     opacity: [0, 1],
-                    translateY: [15, 0],
-                    duration: 1000
-                }, '-=800');
+                    translateY: [10, 0],
+                    duration: 700
+                }, '-=600');
         }
 
         return () => {
