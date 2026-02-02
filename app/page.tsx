@@ -39,7 +39,7 @@ export default function Home() {
             <div className="service-box vibe-hidden"
               style={{ background: '#fff', borderRadius: '8px', boxShadow: 'var(--shadow-sm)', transition: 'transform 0.3s ease', overflow: 'hidden' }}>
               <div style={{ height: '200px', overflow: 'hidden' }}>
-                <Image src="/service-video.png" alt="Video Production" width={400} height={200} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <Image src="/service-video.png" alt="Video Production" width={400} height={200} style={{ width: '100%', height: '100%', objectFit: 'cover' }} priority />
               </div>
               <div style={{ padding: '30px' }}>
                 <h3>Video Production</h3>

@@ -9,8 +9,9 @@
     --accent-gold: #D4AF37;
     --accent-gold-hover: #B5952F;
     --border-light: #E5E5E5;
-    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.08);
+    --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 20px 40px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 30px 60px rgba(0, 0, 0, 0.12);
 }
 
 * {
@@ -34,6 +35,8 @@ h4 {
     /* Font family handled by Next.js Font Optimization in layout */
     color: var(--text-primary);
     font-weight: 700;
+    letter-spacing: -0.02em;
+    /* Tighter for modern luxury look */
 }
 
 a {
@@ -59,7 +62,8 @@ img {
 }
 
 section {
-    padding: 80px 0;
+    padding: 120px 0;
+    /* More airy padding for premium feel */
 }
 
 .bg-light {
@@ -85,9 +89,8 @@ section {
 .btn:hover {
     background-color: transparent;
     color: var(--accent-gold);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
-    /* Stronger Glow */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
 }
 
 .btn-outline {

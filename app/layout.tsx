@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Cinzel, Lato } from "next/font/google"; // Correct imports
+import { Cinzel, Lato } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ScrollAnimation from "@/components/ScrollAnimation"; // Import animation handler
+import ScrollAnimation from "@/components/ScrollAnimation";
+import { TransitionWrapper } from "@/components/TransitionWrapper";
 
 // Configure fonts
 const cinzel = Cinzel({
@@ -34,7 +35,9 @@ export default function RootLayout({
       <body className={`${cinzel.variable} ${lato.variable} antialiased`}>
         <Navbar />
         <ScrollAnimation />
-        {children}
+        <TransitionWrapper>
+          {children}
+        </TransitionWrapper>
         <Footer />
       </body>
     </html>

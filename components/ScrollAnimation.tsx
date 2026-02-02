@@ -1,83 +1,78 @@
 "use client";
 
 import { useEffect } from "react";
-import { animate } from "animejs";
+// In animejs v4 (beta/RC), the main export is often 'animate' or the default is removed.
+// We'll try a flexible import to handle potential env differences.
+import * as animeModule from "animejs";
+import { usePathname } from "next/navigation";
 
-interface RevealOptions {
-    duration?: number;
-    delay?: number;
-    interval?: number;
-    opacity?: [number, number];
-    translateY?: [number, number];
-    translateX?: [number, number];
-    scale?: [number, number];
-    easing?: string;
-    viewport?: number;
-}
+const anime = (animeModule as any).animate || (animeModule as any).default || animeModule;
 
 export default function ScrollAnimation() {
+    const pathname = usePathname();
+
     useEffect(() => {
-        // Core Reveal Function Logic
-        const reveal = (selector: string, options: RevealOptions = {}) => {
-            const defaults = {
-                duration: 1000,
-                delay: 0,
-                interval: 0,
-                opacity: [0, 1],
-                translateY: [20, 0],
-                translateX: [0, 0],
-                scale: [1, 1],
-                easing: 'cubicBezier(0.25, 1, 0.5, 1)',
-                viewport: 0.15
-            };
+        const hiddenElements = document.querySelectorAll(".vibe-hidden");
 
-            const config = { ...defaults, ...options };
-            const elements = document.querySelectorAll(selector);
+        hiddenElements.forEach(el => {
+            (el as HTMLElement).style.opacity = "0";
+            (el as HTMLElement).style.transform = "translateY(30px)";
+        });
 
-            if (elements.length === 0) return;
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        const el = entry.target as HTMLElement;
-
-                        const staggerDelay = config.interval ? (index * config.interval) : config.delay;
-
-                        animate(el, {
-                            opacity: config.opacity as [number, number],
-                            translateY: config.translateY as [number, number],
-                            translateX: config.translateX as [number, number],
-                            scale: config.scale as [number, number],
-                            duration: config.duration,
-                            delay: staggerDelay,
-                            easing: config.easing,
-                            begin: () => {
-                                el.style.visibility = 'visible';
-                                el.classList.remove('vibe-hidden');
-                            }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (typeof anime === 'function') {
+                        anime({
+                            targets: entry.target,
+                            opacity: [0, 1],
+                            translateY: [30, 0],
+                            easing: 'easeOutExpo',
+                            duration: 1200,
+                            delay: 200
                         });
-
-                        observer.unobserve(el);
                     }
-                });
-            }, { threshold: config.viewport });
-
-            elements.forEach(el => {
-                (el as HTMLElement).style.opacity = '0';
-                observer.observe(el);
+                    observer.unobserve(entry.target);
+                }
             });
+        }, { threshold: 0.1 });
+
+        hiddenElements.forEach(el => observer.observe(el));
+
+        const heroText = document.querySelector(".hero-text-entry");
+        if (heroText && typeof anime.timeline === 'function') {
+            anime.timeline({ easing: 'easeOutExpo' })
+                .add({
+                    targets: '.hero-text-entry',
+                    opacity: [0, 1],
+                    translateY: [50, 0],
+                    duration: 1500,
+                    delay: 500
+                })
+                .add({
+                    targets: '.hero-tag-entry',
+                    opacity: [0, 1],
+                    translateY: [20, 0],
+                    duration: 1000,
+                }, '-=800')
+                .add({
+                    targets: '.hero-cta-entry',
+                    opacity: [0, 1],
+                    translateY: [10, 0],
+                    duration: 800,
+                }, '-=600');
+        }
+
+        return () => {
+            observer.disconnect();
+            if (typeof anime.remove === 'function') {
+                anime.remove('.vibe-hidden');
+                anime.remove('.hero-text-entry');
+                anime.remove('.hero-tag-entry');
+                anime.remove('.hero-cta-entry');
+            }
         };
-
-        // Initialize Animations
-        reveal('.hero-logo-entry', { duration: 1000, translateY: [-50, 0], opacity: [0, 1], delay: 300 });
-        reveal('.hero-text-entry', { duration: 1000, translateY: [50, 0], opacity: [0, 1], delay: 600 });
-        reveal('.hero-tag-entry', { duration: 1000, translateY: [30, 0], opacity: [0, 1], delay: 900 });
-        reveal('.hero-cta-entry', { duration: 1000, translateY: [30, 0], opacity: [0, 1], delay: 1200 });
-        reveal('.hero-visual-entry', { duration: 1200, translateY: [50, 0], scale: [0.95, 1], opacity: [0, 1], delay: 1400 });
-        reveal('.vibe-hidden', { duration: 1000, interval: 200, viewport: 0.15, opacity: [0, 1], translateY: [40, 0] });
-        reveal('.gallery-item', { duration: 600, interval: 100, opacity: [0, 1], scale: [0.9, 1], viewport: 0.1 });
-
-    }, []); // Run once on mount
+    }, [pathname]);
 
     return null;
 }
