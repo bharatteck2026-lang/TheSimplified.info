@@ -7,24 +7,29 @@ export default function StatsCounter() {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        const counters = containerRef.current?.querySelectorAll('.counter');
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const counter = entry.target;
-                    const target = +(counter.getAttribute('data-target') || 0);
+                    const el = entry.target as HTMLElement;
+                    const targetValue = parseInt(el.getAttribute('data-target') || '0', 10);
 
-                    animate(counter, {
-                        innerHTML: [0, target],
-                        round: 1,
-                        easing: 'easeInOutExpo',
-                        duration: 2000
+                    const obj = { count: 0 };
+                    animate(obj, {
+                        count: targetValue,
+                        duration: 2000,
+                        ease: 'out-expo',
+                        onRender: () => {
+                            el.innerText = Math.floor(obj.count).toString();
+                        }
                     });
-                    observer.unobserve(counter);
+
+                    observer.unobserve(el);
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.2 });
 
-        const counters = containerRef.current?.querySelectorAll('.counter');
         counters?.forEach(counter => observer.observe(counter));
 
         return () => observer.disconnect();

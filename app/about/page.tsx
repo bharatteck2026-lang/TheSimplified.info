@@ -26,6 +26,7 @@ export default function About() {
                                 width={600}
                                 height={400}
                                 className="service-main-img"
+                                priority
                             />
                         </div>
                         <div className="vibe-hidden service-text-col">

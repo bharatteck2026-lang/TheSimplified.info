@@ -20,15 +20,15 @@ export default function ScrollAnimation() {
                 if (entry.isIntersecting) {
                     animate(entry.target, {
                         opacity: [0, 1],
-                        translateY: [30, 0],
-                        ease: 'outExpo',
-                        duration: 1200,
-                        delay: 200
+                        translateY: [20, 0], // Reduced range
+                        ease: 'out-expo',     // Standard v4
+                        duration: 800,        // Faster
+                        delay: 100            // Less delay
                     });
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.05 }); // Lower threshold
 
         hiddenElements.forEach(el => observer.observe(el));
 
@@ -43,14 +43,14 @@ export default function ScrollAnimation() {
 
             createTimeline({
                 defaults: {
-                    ease: 'expoOut',
-                    duration: 1000 // Faster
+                    ease: 'out-expo',
+                    duration: 900
                 }
             })
                 .add('.hero-text-entry', {
                     opacity: [0, 1],
                     translateY: [20, 0],
-                    delay: 200 // Faster
+                    delay: 100
                 })
                 .add('.hero-tag-entry', {
                     opacity: [0, 1],
