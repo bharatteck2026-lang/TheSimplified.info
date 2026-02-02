@@ -391,6 +391,134 @@ footer {
     /* Default for JS to pickup */
 }
 
+/* --- STUDIO LINE EXTRAS --- */
+
+.studio-hud {
+    position: absolute;
+    inset: 40px;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.6;
+}
+
+.hud-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--studio-hud);
+}
+
+.hud-top-left {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+}
+
+.hud-top-right {
+    top: 0;
+    right: 0;
+    border-left: none;
+    border-bottom: none;
+}
+
+.hud-bottom-left {
+    bottom: 0;
+    left: 0;
+    border-right: none;
+    border-top: none;
+}
+
+.hud-bottom-right {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+}
+
+.hud-rec {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: monospace;
+    font-size: 10px;
+    color: var(--studio-hud);
+    letter-spacing: 2px;
+}
+
+.rec-dot {
+    width: 6px;
+    height: 6px;
+    background: #FF0000;
+    border-radius: 50%;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.light-leak {
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 1;
+    animation: drift 15s infinite alternate ease-in-out;
+}
+
+@keyframes drift {
+    from {
+        transform: translate(-20%, -20%) scale(1);
+    }
+
+    to {
+        transform: translate(20%, 20%) scale(1.1);
+    }
+}
+
+.glint-text {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.glint-text::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: skewX(-20deg);
+    animation: shimmer 5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+
+    20%,
+    100% {
+        left: 200%;
+    }
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .nav-links {
