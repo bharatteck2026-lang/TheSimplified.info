@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import { TransitionWrapper } from "@/components/TransitionWrapper";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // Configure fonts
 const cinzel = Cinzel({
@@ -42,6 +43,7 @@ export default function RootLayout({
           {children}
         </TransitionWrapper>
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
